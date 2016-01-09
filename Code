@@ -1,0 +1,22 @@
+
+def main():
+    import math
+    #given BJT values 
+    Is = 1*10**-16
+    Vt = .026
+
+    #starting guess
+    Vbe0 = .8
+    Vbe1 = 0
+    Ic0 = 1
+    #Ic1 = 0 
+
+    #iterate math
+    while (abs(Vbe1 - Vbe0) >= .0001):
+        Vbe0 = Vbe1 
+        #transistors equations 
+        Vbe1 = Vt*math.log(Ic0/Is)
+        Ic0 = Is*math.exp(Vbe1/Vt)
+    print(Vbe1, Ic0)     
+    
+main() 
